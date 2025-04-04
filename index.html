@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="es"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="es"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js ie ie9" lang="es"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="es"> <!--<![endif]-->
+<head>
+   <meta charset="utf-8">
+   <title>Tecnología Siglo XXI</title>
+   <meta name="description" content="Explora los avances tecnológicos más importantes del siglo XXI">  
+   <meta name="author" content="">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <style>
+      :root {
+         --color-azul: #3498db;
+         --color-azul-oscuro: #2980b9;
+         --color-texto: #ffffff;
+         --color-fondo: #111111;
+         --color-fondo-claro: #222222;
+         --color-invention-header: #333333;
+         --color-hologram: rgba(52, 152, 219, 0.7);
+      }
+      body, h1, h2, h3, h4, h5, h6, p, a, span, li, .portfolio-item-meta h5, .portfolio-item-meta p, .portfolio-item-meta .desc, .service-content p {
+         color: var(--color-texto) !important;
+      }
+      .button.stroke, hr, #nav-wrap ul#nav li.current a, #go-top a {
+         border-color: var(--color-azul) !important;
+         color: var(--color-texto) !important;
+      }
+      .button.stroke:hover, #go-top a, #nav-wrap ul#nav li.current a {
+         background-color: var(--color-azul) !important;
+      }
+      .button.stroke:hover, #go-top a:hover {
+         background-color: var(--color-azul-oscuro) !important;
+      }
+      .service-list .icon-part {
+         background-color: var(--color-azul) !important;
+      }
+      .service-list .icon-part i {
+         color: var(--color-texto) !important;
+      }
+      .portfolio-item .overlay {
+         background: rgba(52, 152, 219, 0.8) !important;
+      }
+      .flex-control-paging li a {
+         background: var(--color-azul) !important;
+      }
+      .flex-control-paging li a.flex-active {
+         background: var(--color-texto) !important;
+      }
+      * {
+         --color-primary: var(--color-azul) !important;
+         --color-secondary: var(--color-azul-oscuro) !important;
+      }
+      
+      /* Estilos para centrar iconos */
+      .service-list {
+         text-align: center;
+      }
+      .service-list .icon-part {
+         margin: 0 auto 15px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+      .service-list .bgrid {
+         padding: 30px 20px;
+      }
+      
+      /* Estilos para la sección de inventos */
+      .inventions-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+         gap: 30px;
+         margin-top: 50px;
+      }
+      
+      .invention-icon {
+         background: var(--color-fondo-claro);
+         border-radius: 10px;
+         padding: 30px;
+         text-align: center;
+         cursor: pointer;
+         transition: all 0.3s ease;
+         position: relative;
+         overflow: hidden;
+         border: 1px solid #444;
+         height: 200px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+      }
+      
+      .invention-icon:hover {
+         transform: translateY(-10px);
+         box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      }
+      
+      .invention-icon img {
+         width: 80px;
+         height: 80px;
+         object-fit: contain;
+         margin-bottom: 15px;
+         transition: all 0.3s ease;
+      }
+      
+      .invention-icon:hover img {
+         transform: scale(1.1);
+      }
+      
+      .invention-icon h3 {
+         margin: 0;
+         font-size: 1.2em;
+      }
+      
+      .invention-info {
+         position: fixed;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 80%;
+         max-width: 800px;
+         background: var(--color-fondo-claro);
+         border-radius: 10px;
+         padding: 30px;
+         z-index: 1000;
+         display: none;
+         border: 1px solid var(--color-azul);
+         box-shadow: 0 0 30px rgba(52, 152, 219, 0.5);
+         animation: hologramAppear 0.5s ease-out forwards;
+      }
+      
+      .invention-info::before {
+         content: '';
+         position: absolute;
+         top: 0;
+         left: -100%;
+         width: 100%;
+         height: 100%;
+         background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(52, 152, 219, 0.1),
+            transparent
+         );
+         animation: hologramScan 3s linear infinite;
+      }
+      
+      @keyframes hologramAppear {
+         0% {
+            opacity: 0;
+            transform: translate(-50%, -40%);
+         }
+         100% {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+         }
+      }
+      
+      @keyframes hologramScan {
+         0% {
+            left: -100%;
+         }
+         100% {
+            left: 100%;
+         }
+      }
+      
+      .invention-info h3 {
+         color: var(--color-azul) !important;
+         margin-top: 0;
+         font-size: 1.8em;
+      }
+      
+      .invention-info p {
+         margin-bottom: 15px;
+      }
+      
+      .invention-info ul {
+         padding-left: 20px;
+      }
+      
+      .invention-info li {
+         margin-bottom: 8px;
+      }
+      
+      .close-btn {
+         position: absolute;
+         top: 15px;
+         right: 15px;
+         background: none;
+         border: none;
+         color: var(--color-texto);
+         font-size: 1.5em;
+         cursor: pointer;
+      }
+      
+      .overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0,0,0,0.8);
+         z-index: 999;
+         display: none;
+      }
+      
+      /* Estilos mejorados para avances tecnológicos */
+      .advances-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+         gap: 30px;
+         margin-top: 40px;
+      }
+      
+      .advance-card {
+         background: var(--color-fondo-claro);
+         border-radius: 15px;
+         padding: 30px;
+         text-align: center;
+         transition: all 0.5s ease;
+         position: relative;
+         overflow: hidden;
+         border: 1px solid #444;
+         z-index: 1;
+      }
+      
+      .advance-card::before {
+         content: '';
+         position: absolute;
+         top: -2px;
+         left: -2px;
+         right: -2px;
+         bottom: -2px;
+         z-index: -1;
+         background: linear-gradient(45deg, 
+            var(--color-azul), 
+            var(--color-azul-oscuro), 
+            #8e44ad, 
+            var(--color-azul));
+         background-size: 400%;
+         border-radius: 16px;
+         opacity: 0;
+         transition: 0.5s;
+      }
+      
+      .advance-card:hover::before {
+         opacity: 1;
+         animation: animateBorder 8s linear infinite;
+      }
+      
+      @keyframes animateBorder {
+         0% {
+            background-position: 0 0;
+         }
+         50% {
+            background-position: 400% 0;
+         }
+         100% {
+            background-position: 0 0;
+         }
+      }
+      
+      .advance-icon {
+         font-size: 3em;
+         margin-bottom: 20px;
+         color: var(--color-azul);
+         transition: all 0.3s ease;
+      }
+      
+      .advance-card:hover .advance-icon {
+         transform: scale(1.2);
+         color: var(--color-texto);
+      }
+      
+      .advance-card h3 {
+         margin-bottom: 15px;
+         position: relative;
+         display: inline-block;
+      }
+      
+      .advance-card h3::after {
+         content: '';
+         position: absolute;
+         bottom: -5px;
+         left: 50%;
+         transform: translateX(-50%);
+         width: 0;
+         height: 2px;
+         background: var(--color-azul);
+         transition: width 0.3s ease;
+      }
+      
+      .advance-card:hover h3::after {
+         width: 50%;
+      }
+      
+      .advance-card p {
+         transition: all 0.3s ease;
+      }
+      
+      .advance-card:hover p {
+         color: var(--color-texto) !important;
+      }
+      
+      /* Estilos para la sección de eventos (original) */
+      .events-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+         gap: 30px;
+         margin-top: 40px;
+      }
+      
+      .event-card {
+         background: var(--color-fondo-claro);
+         border-radius: 10px;
+         overflow: hidden;
+         transition: all 0.3s ease;
+         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+         cursor: pointer;
+      }
+      
+      .event-card:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      }
+      
+      .event-image {
+         height: 200px;
+         overflow: hidden;
+      }
+      
+      .event-image img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         transition: transform 0.3s ease;
+      }
+      
+      .event-card:hover .event-image img {
+         transform: scale(1.05);
+      }
+      
+      .event-info {
+         padding: 20px;
+         display: none;
+         background: var(--color-invention-header);
+      }
+      
+      .event-info h5 {
+         color: var(--color-azul) !important;
+         margin-bottom: 5px;
+      }
+      
+      .event-info h3 {
+         margin-top: 0;
+         margin-bottom: 10px;
+      }
+      
+      .event-info p {
+         margin-bottom: 0;
+      }
+      
+      .event-card.active .event-info {
+         display: block;
+      }
+      
+      .event-card.active {
+         transform: scale(1.02);
+         box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      }
+   </style>
+   <link rel="stylesheet" href="css/base.css">
+   <link rel="stylesheet" href="css/main.css">
+   <link rel="stylesheet" href="css/media-queries.css">         
+   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   <script src="js/modernizr.js"></script>
+   <link rel="shortcut icon" href="favicon.png">
+</head>
+
+<body class="homepage">
+   <div id="preloader"> 
+      <div id="status">
+         <img src="images/loader.gif" height="60" width="60" alt="">
+         <div class="loader">Cargando...</div>
+      </div>
+   </div>
+   
+   <header id="main-header">
+      <div class="row header-inner">
+         <div class="logo">
+            <a class="smoothscroll" href="#hero">Tecnología Siglo XXI</a>
+         </div>
+         <nav id="nav-wrap">         
+            <a class="mobile-btn" href="#nav-wrap" title="Mostrar menú">
+               <span class='menu-text'>Mostrar menú</span>
+               <span class="menu-icon"></span>
+            </a>
+            <a class="mobile-btn" href="#" title="Ocultar menú">
+               <span class='menu-text'>Ocultar menú</span>
+               <span class="menu-icon"></span>
+            </a>         
+            <ul id="nav" class="nav">
+               <li class="current"><a class="smoothscroll" href="#hero">Inicio</a></li>
+               <li><a class="smoothscroll" href="#events">Eventos</a></li>
+               <li><a class="smoothscroll" href="#influencers">Personajes</a></li>
+               <li><a class="smoothscroll" href="#inventions">Inventos</a></li>
+               <li><a class="smoothscroll" href="#advances">Avances</a></li>
+            </ul> 
+         </nav>
+      </div>
+   </header> 
+
+   <section id="hero">	
+      <div class="row hero-content">
+         <div class="twelve columns flex-container">
+            <div id="hero-slider" class="flexslider">
+               <ul class="slides">
+                  <li>
+                     <div class="flex-caption">
+                        <h1>TECNOLOGÍA DEL SIGLO XXI</h1>   
+                        <p>La revolución digital que transformó nuestro mundo</p>
+                        <p><a class="button stroke smoothscroll" href="#events">Eventos Clave</a></p>                                                                   
+                     </div>                      
+                  </li>
+                  <li>                      
+                     <div class="flex-caption">
+                        <h1>Descubre las mentes brillantes</h1>   
+                        <p><a class="button stroke smoothscroll" href="#influencers">Personajes Influyentes</a></p>                                      
+                     </div>                  
+                  </li>
+                  <li>
+                     <div class="flex-caption">
+                        <h1>Innovaciones que cambiaron todo</h1>
+                        <p><a class="button stroke smoothscroll" href="#inventions">Inventos Revolucionarios</a></p>                                          
+                     </div>
+                  </li>
+                  <li>
+                     <div class="flex-caption">
+                        <h1>Tecnologías del futuro</h1>
+                        <p><a class="button stroke smoothscroll" href="#advances">Avances Tecnológicos</a></p>                                          
+                     </div>
+                  </li>                                    
+               </ul>
+            </div>
+         </div>
+      </div>
+   </section>
+
+<!-- SECCIÓN DE EVENTOS - VERSIÓN ORIGINAL -->
+<section id="events">
+   <div class="row section-head">
+      <div class="twelve columns">
+         <h1>Eventos Clave del Siglo XXI<span>.</span></h1>
+         <hr />
+         <p>Haz click en cada imagen para ver detalles del evento</p>
+      </div>
+   </div>
+   
+   <div class="row">
+      <div class="twelve columns">
+         <div class="events-grid">
+            <!-- Evento 1 - 9/11 -->
+            <div class="event-card">
+               <div class="event-image" onclick="toggleEvent(this)">
+                  <img src="https://th.bing.com/th/id/R.b504be5f679d747ac7bc24013e07de16?rik=n2OZyUUttvY90w&pid=ImgRaw&r=0" alt="9/11">
+               </div>
+               <div class="event-info">
+                  <h5>Septiembre 11, 2001</h5>
+                  <h3>Ataques del 11 de Septiembre</h3>
+                  <p>Los atentados terroristas que cambiaron la política global de seguridad y marcaron el inicio de la "guerra contra el terrorismo".</p>
+               </div>
+            </div>
+            
+            <!-- Evento 2 - James Webb -->
+            <div class="event-card">
+               <div class="event-image" onclick="toggleEvent(this)">
+                  <img src="https://olhardigital.com.br/wp-content/uploads/2023/03/james-1-scaled.jpg" alt="James Webb">
+               </div>
+               <div class="event-info">
+                  <h5>Diciembre 25, 2021</h5>
+                  <h3>Lanzamiento del Telescopio James Webb</h3>
+                  <p>Hito en exploración espacial que permite observar el universo con una claridad nunca antes vista.</p>
+               </div>
+            </div>
+            
+            <!-- Evento 3 - COVID-19 -->
+            <div class="event-card">
+               <div class="event-image" onclick="toggleEvent(this)">
+                  <img src="https://th.bing.com/th/id/R.814b05d8d6baac36f24c9a8428cdaefc?rik=S8KiWVttz6Kyog&pid=ImgRaw&r=0" alt="Vacunas COVID">
+               </div>
+               <div class="event-info">
+                  <h5>2020-2021</h5>
+                  <h3>Pandemia de COVID-19</h3>
+                  <p>La crisis sanitaria global que aceleró el teletrabajo, la telemedicina y el desarrollo de vacunas de ARNm.</p>
+               </div>
+            </div>
+            
+            <!-- Evento 4 - Acuerdo de París -->
+            <div class="event-card">
+               <div class="event-image" onclick="toggleEvent(this)">
+                  <img src="https://th.bing.com/th/id/OIP.A05fhy6eLlh2qbv7yokfVAHaCv?rs=1&pid=ImgDetMain" alt="Acuerdo de París">
+               </div>
+               <div class="event-info">
+                  <h5>Diciembre 12, 2015</h5>
+                  <h3>Acuerdo de París sobre Cambio Climático</h3>
+                  <p>Compromiso global para combatir el calentamiento global y limitar el aumento de temperatura.</p>
+               </div>
+            </div>
+            
+            <!-- Evento 5 - iPhone -->
+            <div class="event-card">
+               <div class="event-image" onclick="toggleEvent(this)">
+                  <img src="https://media.cnn.com/api/v1/images/stellar/prod/230718105811-steve-jobs-iphone-2007.jpg?c=original" alt="iPhone">
+               </div>
+               <div class="event-info">
+                  <h5>Junio 29, 2007</h5>
+                  <h3>Lanzamiento del iPhone</h3>
+                  <p>Revolución en telefonía móvil que inició la era de los dispositivos táctiles multifuncionales.</p>
+               </div>
+            </div>
+            
+            <!-- Evento 6 - Bitcoin -->
+            <div class="event-card">
+               <div class="event-image" onclick="toggleEvent(this)">
+                  <img src="https://th.bing.com/th/id/OIP.O2LOb5SR4HcijP-Ex92S8gHaE8?rs=1&pid=ImgDetMain" alt="Bitcoin">
+               </div>
+               <div class="event-info">
+                  <h5>2009</h5>
+                  <h3>Creación de Bitcoin</h3>
+                  <p>Nacimiento de la primera criptomoneda descentralizada, basada en tecnología blockchain.</p>
+               </div>
+            </div>
+            
+            <!-- Evento 7 - SpaceX -->
+            <div class="event-card">
+               <div class="event-image" onclick="toggleEvent(this)">
+                  <img src="https://th.bing.com/th/id/R.9b5e030c1ad4007c30788137a45de782?rik=DMgEhcrKWLzKRg&pid=ImgRaw&r=0" alt="SpaceX">
+               </div>
+               <div class="event-info">
+                  <h5>Mayo 30, 2020</h5>
+                  <h3>Primer vuelo tripulado de SpaceX</h3>
+                  <p>Primera misión espacial tripulada de una empresa privada en asociación con la NASA.</p>
+               </div>
+            </div>
+            
+            <!-- Evento 8 - Ucrania -->
+            <div class="event-card">
+               <div class="event-image" onclick="toggleEvent(this)">
+                  <img src="https://cnnespanol.cnn.com/wp-content/uploads/2023/02/2022-09-Kharkiv-3.jpg?quality=100&strip=info" alt="Ucrania">
+               </div>
+               <div class="event-info">
+                  <h5>Febrero 24, 2022</h5>
+                  <h3>Invasión Rusa a Ucrania</h3>
+                  <p>Conflicto que transformó el orden geopolítico global y aceleró la transición energética en Europa.</p>
+               </div>
+            </div>
+            
+            <!-- Evento 9 - ChatGPT -->
+            <div class="event-card">
+               <div class="event-image" onclick="toggleEvent(this)">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" style="background-color: #fff; padding: 20px;">
+               </div>
+               <div class="event-info">
+                  <h5>Noviembre 30, 2022</h5>
+                  <h3>Lanzamiento de ChatGPT</h3>
+                  <p>Popularización masiva de la inteligencia artificial conversacional que transformó múltiples industrias.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- Solo la sección de Personajes Influyentes actualizada -->
+<section id="influencers">
+   <div class="row section-head">
+      <div class="twelve columns">
+         <h1>Personajes Clave<span>.</span></h1>
+         <hr />
+         <p>Las mentes más brillantes que han dado forma al panorama tecnológico actual con sus innovaciones y visiones audaces.</p>
+      </div>
+   </div>
+   <div class="row items">
+      <div class="twelve columns">
+         <div id="portfolio-wrapper" class="bgrid-fourth s-bgrid-third mob-bgrid-half group">
+
+            <!-- Bill Gates -->
+            <div class="bgrid item">
+   <div class="item-wrap">
+      <div class="portfolio-item">
+         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Bill_Gates_2017_%28cropped%29.jpg" alt="Bill Gates" style="width: 100%; height: 300px; object-fit: cover;">
+         <div class="overlay">
+            <div class="portfolio-item-meta">
+               <h5>Bill Gates</h5>
+               <p>Cofundador de Microsoft</p>
+               <p class="desc">Pionero de la revolución de la computación personal con Windows. Filántropo global a través de la Fundación Bill & Melinda Gates.</p>
+            </div>
+         </div>                        
+      </div>
+   </div>
+</div>
+            
+            <!-- Elon Musk -->
+            <div class="bgrid item">
+               <div class="item-wrap">
+                  <div class="portfolio-item">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg" alt="Elon Musk" style="width: 100%; height: 300px; object-fit: cover;">
+                     <div class="overlay">
+                        <div class="portfolio-item-meta">
+                           <h5>Elon Musk</h5>
+                           <p>Innovador multifacético</p>
+                           <p class="desc">Visionario detrás de Tesla, SpaceX, Neuralink y The Boring Company. Revolucionó vehículos eléctricos y exploración espacial.</p>
+                        </div>
+                     </div>                        
+                  </div>
+               </div>
+            </div>
+            
+            <!-- Steve Jobs -->
+            <div class="bgrid stack item">
+               <div class="item-wrap">
+                  <div class="portfolio-item">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Steve_Jobs_Headshot_2010-CROP_%28cropped_2%29.jpg" alt="Steve Jobs" style="width: 100%; height: 300px; object-fit: cover;">                        
+                     <div class="overlay">
+                        <div class="portfolio-item-meta">
+                           <h5>Steve Jobs</h5>
+                           <p>Visionario de Apple</p>
+                           <p class="desc">Transformó la tecnología con el iPhone, iPad y Mac. Maestro del diseño intuitivo y la integración hardware-software.</p>
+                        </div>
+                     </div>                        
+                  </div>
+               </div>
+            </div>
+            
+            <!-- Mark Zuckerberg -->
+            <div class="bgrid item">
+               <div class="item-wrap">
+                  <div class="portfolio-item">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg" alt="Mark Zuckerberg" style="width: 100%; height: 300px; object-fit: cover;">
+                     <div class="overlay">
+                        <div class="portfolio-item-meta">
+                           <h5>Mark Zuckerberg</h5>
+                           <p>Cofundador de Facebook/Meta</p>
+                           <p class="desc">Creador de la red social más grande del mundo. Pionero en redes sociales y metaverso con Oculus y Meta.</p>
+                        </div>
+                     </div>                       
+                  </div>
+               </div>
+            </div>
+            
+            <!-- Jeff Bezos -->
+            <div class="bgrid item">
+               <div class="item-wrap">
+                  <div class="portfolio-item">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_%2839074799225%29_%28cropped%29.jpg" alt="Jeff Bezos" style="width: 100%; height: 300px; object-fit: cover;">
+                     <div class="overlay">
+                        <div class="portfolio-item-meta">
+                           <h5>Jeff Bezos</h5>
+                           <p>Fundador de Amazon</p>
+                           <p class="desc">Revolucionó el comercio electrónico con Amazon y la nube con AWS. Visionario de Blue Origin en la industria espacial.</p>
+                        </div>
+                     </div>                       
+                  </div>
+               </div>
+            </div>
+            
+            <!-- Sam Altman -->
+            <div class="bgrid item">
+               <div class="item-wrap">
+                  <div class="portfolio-item">
+                     <img src="https://www.rollingstone.com/wp-content/uploads/2023/11/sam-altman-openai.jpg?w=1600&h=900&crop=1" alt="Sam Altman" style="width: 100%; height: 300px; object-fit: cover;">
+                     <div class="overlay">
+                        <div class="portfolio-item-meta">
+                           <h5>Sam Altman</h5>
+                           <p>CEO de OpenAI</p>
+                           <p class="desc">Líder en IA con ChatGPT y GPT-4. Ex-presidente de Y Combinator, impulsor de startups tecnológicas.</p>
+                        </div>
+                     </div>                       
+                  </div>
+               </div>
+            </div>
+            
+            <!-- Larry Page -->
+            <div class="bgrid item">
+               <div class="item-wrap">
+                  <div class="portfolio-item">
+                     <img src="https://www.topmost10.com/wp-content/uploads/2022/02/Larry-Page.jpg" alt="Larry Page" style="width: 100%; height: 300px; object-fit: cover;">
+                     <div class="overlay">
+                        <div class="portfolio-item-meta">
+                           <h5>Larry Page</h5>
+                           <p>Cofundador de Google</p>
+                           <p class="desc">Cocreó el motor de búsqueda más importante del mundo. Impulsó proyectos como Waymo (autos autónomos).</p>
+                        </div>
+                     </div>                       
+                  </div>
+               </div>
+            </div>
+            
+            <!-- Sergey Brin -->
+            <div class="bgrid item">
+               <div class="item-wrap">
+                  <div class="portfolio-item">
+                     <img src="https://assets.website-files.com/62e89931273b5c21be76c486/6384cfa6d4aa2d255461a4fe_gettyimages-456023687.jpeg" alt="Sergey Brin" style="width: 100%; height: 300px; object-fit: cover;">
+                     <div class="overlay">
+                        <div class="portfolio-item-meta">
+                           <h5>Sergey Brin</h5>
+                           <p>Cofundador de Google</p>
+                           <p class="desc">Desarrolló el algoritmo PageRank de Google. Innovador en proyectos como Google Glass y realidad aumentada.</p>
+                        </div>
+                     </div>                       
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<style>
+/* ESTILOS PARA PERSONAJES - VERSIÓN FINAL */
+#influencers {
+   padding: 80px 0;
+   background: #111;
+}
+
+.portfolio-item {
+   position: relative;
+   height: 300px;
+   overflow: hidden;
+   border-radius: 8px;
+   border: 2px solid #444;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+   transition: all 0.3s ease;
+}
+
+.portfolio-item img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   display: block;
+   transition: transform 0.5s;
+}
+
+.portfolio-item:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+   border-color: #3498db;
+}
+
+.portfolio-item:hover img {
+   transform: scale(1.05);
+}
+
+.portfolio-item .overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(41, 128, 185, 0.9);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   opacity: 0;
+   transition: opacity 0.4s;
+}
+
+.portfolio-item:hover .overlay {
+   opacity: 1;
+}
+
+.portfolio-item-meta {
+   padding: 25px;
+   text-align: center;
+   transform: translateY(20px);
+   transition: transform 0.4s;
+}
+
+.portfolio-item:hover .portfolio-item-meta {
+   transform: translateY(0);
+}
+
+/* ESTO ES LO MÁS IMPORTANTE - GARANTIZA TEXTO BLANCO */
+.portfolio-item-meta * {
+   color: #ffffff !important;
+}
+
+.portfolio-item-meta h5 {
+   font-size: 1.5em;
+   font-weight: 600;
+   margin-bottom: 10px;
+}
+
+.portfolio-item-meta p {
+   font-size: 1em;
+   margin-bottom: 12px;
+   opacity: 0.9;
+}
+
+.portfolio-item-meta .desc {
+   font-size: 0.95em;
+   line-height: 1.6;
+}
+</style>
+   <!-- SECCIÓN DE INVENTOS REVOLUCIONARIOS - VERSIÓN ICONOS CON HOLOGRAMA -->
+   <section id="inventions">
+      <div class="row section-head">
+         <div class="twelve columns">
+            <h1>Inventos Revolucionarios<span>.</span></h1>
+            <hr />
+            <p>Tecnologías y productos que cambiaron el mundo en el siglo XXI</p>
+         </div>
+      </div>
+      <div class="row">
+         <div class="twelve columns">
+            <div class="inventions-grid">
+               <!-- Tesla -->
+               <div class="invention-icon" onclick="showInvention('tesla')">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/1200px-Tesla_Motors.svg.png" alt="Tesla">
+                  <h3>Tesla</h3>
+               </div>
+
+               <!-- SpaceX -->
+               <div class="invention-icon" onclick="showInvention('spacex')">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/SpaceX_logo_black.svg/1200px-SpaceX_logo_black.svg.png" alt="SpaceX">
+                  <h3>SpaceX</h3>
+               </div>
+
+               <!-- iPhone -->
+               <div class="invention-icon" onclick="showInvention('iphone')">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png" alt="iPhone">
+                  <h3>iPhone</h3>
+               </div>
+
+               <!-- Meta Quest -->
+               <div class="invention-icon" onclick="showInvention('meta')">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/1200px-Meta_Platforms_Inc._logo.svg.png" alt="Meta">
+                  <h3>Meta Quest</h3>
+               </div>
+
+               <!-- ChatGPT -->
+               <div class="invention-icon" onclick="showInvention('chatgpt')">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1200px-ChatGPT_logo.svg.png" alt="ChatGPT">
+                  <h3>ChatGPT</h3>
+               </div>
+
+               <!-- Google Search -->
+               <div class="invention-icon" onclick="showInvention('google')">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Google">
+                  <h3>Google Search</h3>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Popups de información para cada invento -->
+      <div class="overlay" id="invention-overlay" onclick="hideInvention()"></div>
+
+      <!-- Tesla -->
+      <div class="invention-info" id="tesla-info">
+         <button class="close-btn" onclick="hideInvention()">&times;</button>
+         <h3>Tesla</h3>
+         <p>Vehículos eléctricos de alto rendimiento que demostraron que los autos ecológicos pueden ser potentes y deseables. Innovaciones como:</p>
+         <ul>
+            <li>Baterías de larga duración</li>
+            <li>Sistema de conducción autónoma</li>
+            <li>Actualizaciones over-the-air</li>
+            <li>Supercharger network global</li>
+            <li>Diseño futurista y minimalista</li>
+         </ul>
+      </div>
+
+      <!-- SpaceX -->
+      <div class="invention-info" id="spacex-info">
+         <button class="close-btn" onclick="hideInvention()">&times;</button>
+         <h3>SpaceX</h3>
+         <p>Revolución en la industria espacial con:</p>
+         <ul>
+            <li>Cohetes reutilizables (Falcon 9)</li>
+            <li>Cápsula Dragon para la NASA</li>
+            <li>Sistema Starship para misiones interplanetarias</li>
+            <li>Red de satélites Starlink</li>
+            <li>Reducción de costos en lanzamientos espaciales</li>
+         </ul>
+      </div>
+
+      <!-- iPhone -->
+      <div class="invention-info" id="iphone-info">
+         <button class="close-btn" onclick="hideInvention()">&times;</button>
+         <h3>iPhone (2007)</h3>
+         <p>El smartphone que definió una era:</p>
+         <ul>
+            <li>Primera pantalla multitáctil comercial</li>
+            <li>App Store y ecosistema de aplicaciones</li>
+            <li>Diseño minimalista y funcional</li>
+            <li>Integración perfecta hardware-software</li>
+            <li>Revolución en interfaces de usuario</li>
+         </ul>
+      </div>
+
+      <!-- Meta Quest -->
+      <div class="invention-info" id="meta-info">
+         <button class="close-btn" onclick="hideInvention()">&times;</button>
+         <h3>Meta Quest</h3>
+         <p>Plataforma de realidad virtual que incluye:</p>
+         <ul>
+            <li>Dispositivos VR todo-en-uno</li>
+            <li>Ecosistema de juegos y aplicaciones</li>
+            <li>Plataforma Horizon para el metaverso</li>
+            <li>Controladores intuitivos</li>
+            <li>Experiencias sociales inmersivas</li>
+         </ul>
+      </div>
+
+      <!-- ChatGPT -->
+      <div class="invention-info" id="chatgpt-info">
+         <button class="close-btn" onclick="hideInvention()">&times;</button>
+         <h3>ChatGPT</h3>
+         <p>Inteligencia Artificial conversacional que ofrece:</p>
+         <ul>
+            <li>Respuestas en lenguaje natural</li>
+            <li>Capacidad para generar código, textos y más</li>
+            <li>Modelo GPT de última generación</li>
+            <li>Asistencia en múltiples idiomas</li>
+            <li>Aplicaciones en educación, negocios y creatividad</li>
+         </ul>
+      </div>
+
+      <!-- Google Search -->
+      <div class="invention-info" id="google-info">
+         <button class="close-btn" onclick="hideInvention()">&times;</button>
+         <h3>Motor de Búsqueda Google</h3>
+         <p>El sistema que organizó la información del mundo:</p>
+         <ul>
+            <li>Algoritmo PageRank revolucionario</li>
+            <li>Búsqueda instantánea y predictiva</li>
+            <li>Integración con múltiples servicios</li>
+            <li>Búsqueda por voz e imágenes</li>
+            <li>Personalización basada en comportamiento</li>
+         </ul>
+      </div>
+   </section>
+
+   <!-- SECCIÓN DE AVANCES TECNOLÓGICOS - VERSIÓN FUTURISTA -->
+   <section id="advances">
+      <div class="row section-head">
+         <div class="twelve columns">
+            <h1>Avances Tecnológicos<span>.</span></h1>
+            <hr />
+            <p>Innovaciones revolucionarias que han transformado nuestra forma de vivir y trabajar en el siglo XXI.</p>
+         </div>
+      </div>
+      <div class="row">
+         <div class="twelve columns">
+            <div class="advances-grid">
+               <div class="advance-card">
+                  <i class="fas fa-brain advance-icon"></i>
+                  <h3>Inteligencia Artificial</h3>
+                  <div class="service-content">                      
+                     <p>Sistemas capaces de reconocimiento de voz, visión por computadora y traducción automática gracias al aprendizaje automático.</p> 
+                  </div>      
+               </div>
+               <div class="advance-card">
+                  <i class="fas fa-atom advance-icon"></i>
+                  <h3>Computación Cuántica</h3>                  
+                  <div class="service-content">                      
+                     <p>Revolucionaria tecnología de procesamiento que resuelve problemas imposibles para computadoras tradicionales.</p> 
+                  </div>                                 
+               </div>
+               <div class="advance-card">
+                  <i class="fas fa-bolt advance-icon"></i>
+                  <h3>Tecnología 5G</h3>
+                  <div class="service-content">                      
+                     <p>Velocidades ultrarrápidas y baja latencia que permiten realidad virtual, IoT y vehículos autónomos.</p> 
+                  </div>                               
+               </div>
+               <div class="advance-card">
+                  <i class="fas fa-dna advance-icon"></i>                      
+                  <h3>Edición Genética CRISPR</h3> 
+                  <div class="service-content">                      
+                     <p>Técnica precisa para modificar ADN con aplicaciones en medicina, agricultura y biotecnología.</p> 
+                  </div>                                 
+               </div>
+               <div class="advance-card">
+                  <i class="fas fa-satellite advance-icon"></i>
+                  <h3>Telescopio James Webb</h3>
+                  <div class="service-content">                      
+                     <p>Observatorio espacial que revela el universo con una claridad sin precedentes.</p> 
+                  </div>                                 
+               </div>
+               <div class="advance-card">
+                  <i class="fas fa-syringe advance-icon"></i>
+                  <h3>Vacunas de ARNm</h3>
+                  <div class="service-content">
+                     <p>Tecnología revolucionaria demostrada durante la pandemia de COVID-19, con amplias aplicaciones médicas.</p> 
+                  </div>                              
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <footer>
+      <div class="row">       
+         <div class="twelve columns footer-about">
+            <h3>Tecnología Siglo XXI</h3>
+            <p>Explorando los avances tecnológicos y las mentes brillantes que han dado forma al mundo moderno.</p>
+            <p class="copyright">&copy; 2025 Tecnología Siglo XXI. Hecho por Sebastián Losada y Santiago Valencia.</p>        
+            <div id="go-top">
+               <a class="smoothscroll" title="Volver arriba" href="#hero"><span>Arriba</span><i class="fa fa-long-arrow-up"></i></a>
+            </div>
+         </div>
+      </div>
+   </footer>
+
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>   
+   <script src="js/jquery.flexslider.js"></script>
+   <script src="js/jquery.fittext.js"></script>
+   <script src="js/backstretch.js"></script> 
+   <script src="js/waypoints.js"></script>  
+   <script src="js/main.js"></script>
+   
+   <script>
+      // Función para mostrar información de inventos
+      function showInvention(inventionId) {
+         document.getElementById('invention-overlay').style.display = 'block';
+         document.getElementById(inventionId + '-info').style.display = 'block';
+         document.body.style.overflow = 'hidden';
+      }
+      
+      // Función para ocultar información de inventos
+      function hideInvention() {
+         document.getElementById('invention-overlay').style.display = 'none';
+         document.querySelectorAll('.invention-info').forEach(info => {
+            info.style.display = 'none';
+         });
+         document.body.style.overflow = 'auto';
+      }
+      
+      // Cerrar al presionar Escape
+      document.addEventListener('keydown', function(event) {
+         if (event.key === 'Escape') {
+            hideInvention();
+         }
+      });
+      
+      // Función para eventos (original)
+      function toggleEvent(card) {
+         const eventCard = card.parentElement;
+         eventCard.classList.toggle('active');
+         
+         // Cerrar otros eventos abiertos
+         document.querySelectorAll('.event-card').forEach(item => {
+            if (item !== eventCard && item.classList.contains('active')) {
+               item.classList.remove('active');
+            }
+         });
+      }
+   </script>
+</body>
+</html>
